@@ -101,7 +101,7 @@ def playAgain():
 
 #returns the List of Pictures - Didnt wanted it to be in the main
 def Hangmanpics():
-#list of pictures | 9
+#list of pictures | 9 #All Uppercase cause its a constant
     HANGMANPICS = ['''
 
     =========''','''
