@@ -1,7 +1,7 @@
 #---------------------------------------#
 #Functions for my Hangman game          #
 #Creator: Tobias Weber aka MisterNSA    #
-#Date: 09.04.2020                       #
+#Date: 11.05.2020                       #
 #---------------------------------------#
 import random
 

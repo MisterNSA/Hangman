@@ -1,7 +1,7 @@
 #---------------------------------------#
 #My Version of the popular Hangman game #
 #Creator: Tobias Weber aka MisterNSA    #
-#Date: 09.04.2020                       #
+#Date: 11.05.2020                       #
 #---------------------------------------#
 import Hangman_functions as Hf
 
