@@ -6,105 +6,83 @@
 import random
 
 
-
-#Takes a File and moves all word into a list
+# Exports words from a file into a list
 def Word_import():
 
     word_list = []
-
     word_source = open('Wörter.txt', 'r')
 
-    for word in word_source: 
-
-        word_list.append(word)  
-
+    for word in word_source:
+        word_list.append(word)
     word_source.close()
     return(word_list)
 
 
-
-
-#returns a random word from the list
-def Random_word(word_list):  
+# Returns a random word from the list
+def Random_word(word_list):
 
     word = random.choice(word_list)
-    word = word.lower() 
-    word = word.strip() #remove \n 
+    word = word.lower()
+    word = word.strip()  # remove \n
     return(word)
 
 
-
-#Show the current Informations of the Game
+# Shows the current Informations of the Game
 def displayBoard(correctLetters, current_word, wrongLetters):
 
+    # Select current Picture for amount of wrong letters
     HANGMANPICS = Hangmanpics()
-    print(HANGMANPICS[len(wrongLetters)]) #current picture of Hangma
-    print()
+    print(HANGMANPICS[len(wrongLetters)])
 
+    # Print wrong letters if there are any
     if len(wrongLetters) > 0:
-        print("Wrong letters:", end=" ") 
+        print("Wrong letters: ")
+        for wletter in wrongLetters:
+            print(wletter, end=", ")
+        print()
 
-    for letter in wrongLetters:
+    # Shows how much letters the word has and replaces blanks with correctly guessed letters
+    blanks = "_" * len(current_word)
+    for letter in range(len(current_word)):
+        if current_word[letter] in correctLetters:
+            blanks = blanks[:letter] + current_word[letter] + blanks[letter+1:]
 
-        print(letter, end=", ") 
-
-    print()
-    blanks = "_" * len(current_word) 
-        
-    for i in range(len(current_word)): # replace blanks with correctly guessed letters
-        
-        if current_word[i] in correctLetters:
-
-            blanks = blanks[:i] + current_word[i] + blanks[i+1:]
-        
-    for letter in blanks: # show the secret word with spaces in between each letter
-
+    # show the secret word with spaces in between each letter
+    for letter in blanks:
         print(letter, end=" ")
-
     print()
-
-
 
 
 # Returns the letter the player entered. This function makes sure the player entered a single letter, and not something else.
 def getGuess(alreadyGuessed):
 
     while True:
-        
         guess = input("Guess a letter: ")
         guess = guess.lower()
-
         if len(guess) != 1:
-
             print("Please enter a single letter.")
-
         elif guess in alreadyGuessed:
-
             print("You have already guessed that letter. Choose again.")
-
-        elif guess not in "abcdefghijklmnopqrstuvwxyz": #Wenn kein Buchstabe
-
+        elif guess not in "abcdefghijklmnopqrstuvwxyz":  # Wenn kein Buchstabe
             print("Please enter a LETTER.")
-
         else:
-
             return guess
-
 
 
 # This function returns True if the player wants to play again (y), otherwise it returns False.
 def playAgain():
 
-    return input("Do you want to play again? (yes or no) ").lower().startswith("y") 
+    return input("Do you want to play again? (yes or no) ").lower().startswith("y")
 
 
-
-#returns the List of Pictures - Didnt wanted it to be in the main
+# returns the List of Pictures - Didnt wanted it to be in the main
 def Hangmanpics():
-#list of pictures | 9 #All Uppercase cause its a constant
-    HANGMANPICS = ['''
+    # list of all 9 pictures #Writen in all Uppercase cause its a constant
+    HANGMANPICS = [
+        '''
 
-    =========''','''
+    =========
+    ''', '''
 
       +---+
           |
@@ -112,7 +90,8 @@ def Hangmanpics():
           |  
           |
           |
-    =========''','''
+    =========
+    ''', '''
 
       +---+
       |   |
@@ -120,23 +99,26 @@ def Hangmanpics():
           |
           |
           |
-    =========''', '''
-
-      +---+
-      |   |
-      O   |
-          |
-          |
-          |
-    =========''', '''
+    =========
+    ''', '''
 
       +---+
       |   |
       O   |
+          |
+          |
+          |
+    =========
+    ''', '''
+
+      +---+
+      |   |
+      O   |
       |   |
           |
           |
-    =========''', '''
+    =========
+    ''', '''
 
       +---+
       |   |
@@ -144,7 +126,8 @@ def Hangmanpics():
      /|   |
           |
           |
-    =========''', '''
+    =========
+    ''', '''
 
       +---+
       |   |
@@ -152,7 +135,8 @@ def Hangmanpics():
      /|\  |
           |
           |
-    =========''', '''
+    =========
+    ''', '''
 
       +---+
       |   |
@@ -160,7 +144,8 @@ def Hangmanpics():
      /|\  |
      /    |
           |
-    =========''', '''
+    =========
+    ''', '''
 
       +---+
       |   |
@@ -168,6 +153,6 @@ def Hangmanpics():
      /|\  |
      / \  |
           |
-    =========''']
+    =========
+    ''']
     return HANGMANPICS
-    
