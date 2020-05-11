@@ -27,17 +27,14 @@ Dorfschule
 Eimer
 Eisenbahn
 Engel
-Erdöl
 Ergebnis
 Fahrrad
-Feuerlöscher
 Film
 Foto
 Freiheit
 Gehirn
 Gehweg
 Grundgesetz
-Grundstück
 Gymnasium
 Hafen
 Haus
@@ -51,7 +48,6 @@ Infusion
 Insel
 Jachthafen
 Jacke
-Jäger
 Jobcenter
 Jugendclub
 Kaktus
@@ -67,7 +63,6 @@ Locher
 Maus
 Monat
 Monitor
-Musikstück
 Muskel
 Nabelschnur
 Nachbar
